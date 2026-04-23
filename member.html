@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 
     <script>
-        if (sessionStorage.getItem("memberAuthenticated") !== "true") {
+        if (localStorage.getItem("memberAuthenticated") !== "true") {
             alert("このページを見るにはログインが必要です。");
             location.href = "login.html";
         }
@@ -124,14 +124,14 @@
     </main>
 
     <script>
-        const memberId = sessionStorage.getItem("memberStudentId");
+        const memberId = localStorage.getItem("memberStudentId");
         if (memberId) {
             document.getElementById("memberIdDisplay").textContent = memberId;
         }
 
         function logout() {
-            sessionStorage.removeItem("memberAuthenticated");
-            sessionStorage.removeItem("memberStudentId");
+            localStorage.removeItem("memberAuthenticated");
+            localStorage.removeItem("memberStudentId");
             alert("ログアウトしました。");
             location.href = "login.html";
         }

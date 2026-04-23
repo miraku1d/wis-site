@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ログイン</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+
+  <div class="login-container">
+    <div class="login-card">
+      <h2>メンバーログイン</h2>
+      <p class="login-subtitle">学籍番号とパスワードを入力してください</p>
+
+      <form onsubmit="login(); return false;">
+        <input type="text" id="id" name="username" placeholder="学籍番号" autocomplete="username">
+
+        <input type="password" id="pass" name="password" placeholder="パスワード" autocomplete="current-password">
+
+        <label class="remember-label">
+          <input type="checkbox" id="rememberId">
+          学籍番号を記憶する
+        </label>
+
+        <button type="submit">ログイン</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    window.onload = function () {
+      const savedId = localStorage.getItem("savedStudentId");
+      if (savedId) {
+        document.getElementById("id").value = savedId;
+        document.getElementById("rememberId").checked = true;
+      }
+    };
+
+    function login() {
+      var id = document.getElementById("id").value;
+      var pass = document.getElementById("pass").value;
+      var rememberId = document.getElementById("rememberId").checked;
+
+      if (rememberId) {
+        localStorage.setItem("savedStudentId", id);
+      } else {
+        localStorage.removeItem("savedStudentId");
+      }
+
+      if (id === "72245012" && pass === "danceunitwis") {
+        window.location.href = "member.html";
+      } else {
+        alert("学籍番号またはパスワードが違います");
+      }
+    }
+  </script>
+
+</body>
+</html>

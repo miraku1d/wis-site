@@ -14,9 +14,22 @@
       <p class="login-subtitle">学籍番号とパスワードを入力してください</p>
 
       <form onsubmit="login(); return false;">
-        <input type="text" id="id" name="username" placeholder="学籍番号" autocomplete="username">
+        <input
+          type="text"
+          id="id"
+          name="username"
+          placeholder="学籍番号"
+          autocomplete="username"
+          inputmode="numeric"
+        >
 
-        <input type="password" id="pass" name="password" placeholder="パスワード" autocomplete="current-password">
+        <input
+          type="password"
+          id="pass"
+          name="password"
+          placeholder="パスワード"
+          autocomplete="current-password"
+        >
 
         <label class="remember-label">
           <input type="checkbox" id="rememberId">
@@ -37,10 +50,18 @@
       }
     };
 
+    function normalizeStudentId(value) {
+      return value
+        .trim()
+        .replace(/[０-９]/g, function(s) {
+          return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+        });
+    }
+
     function login() {
-      var id = document.getElementById("id").value;
-      var pass = document.getElementById("pass").value;
-      var rememberId = document.getElementById("rememberId").checked;
+      const id = normalizeStudentId(document.getElementById("id").value);
+      const pass = document.getElementById("pass").value.trim();
+      const rememberId = document.getElementById("rememberId").checked;
 
       if (rememberId) {
         localStorage.setItem("savedStudentId", id);
@@ -49,6 +70,8 @@
       }
 
       if (id === "72245012" && pass === "danceunitwis") {
+        sessionStorage.setItem("memberAuthenticated", "true");
+        sessionStorage.setItem("memberStudentId", id);
         window.location.href = "member.html";
       } else {
         alert("学籍番号またはパスワードが違います");

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>練習動画 | Dance Unit W+I&S</title>
+    <title>メンバー限定ページ</title>
     <link rel="stylesheet" href="style.css">
 
     <script>
@@ -12,103 +12,131 @@
             location.href = "login.html";
         }
     </script>
+
+    <style>
+        .member-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 20px auto 0;
+            max-width: 1100px;
+            padding: 0 20px;
+        }
+
+        .member-status {
+            font-size: 0.95rem;
+            color: #555;
+            background: #fff;
+            padding: 10px 16px;
+            border-radius: 999px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .logout-btn {
+            display: inline-block;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 999px;
+            background: #ff4d6d;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .logout-btn:hover {
+            background: #e63b5d;
+        }
+    </style>
 </head>
 
-<body class="video-page">
+<body class="member-page">
 
-    <header class="video-header">
-        <h1>練習動画</h1>
-        <p>Dance Unit W+I&S メンバー限定 練習動画ページ</p>
-        <a href="member.html" class="back-home">メンバー限定ページに戻る</a>
+    <header class="member-header">
+        <div class="member-header-overlay">
+            <h1>Members Only</h1>
+            <p>Dance Unit W+I&S メンバー限定ページ</p>
+            <a href="index.html" class="back-home">一般ページに戻る</a>
+        </div>
     </header>
 
-    <main class="video-main">
-
-        <div class="video-top-bar">
-            <div class="video-status">
-                ログイン中：
-                <span id="memberIdDisplay">メンバー</span>
-            </div>
-            <button class="logout-btn" onclick="logout()">ログアウト</button>
+    <div class="member-top-bar">
+        <div class="member-status">
+            ログイン中：
+            <span id="memberIdDisplay">メンバー</span>
         </div>
+        <button class="logout-btn" onclick="logout()">ログアウト</button>
+    </div>
 
-        <section class="video-intro">
-            <h2>Practice Movie</h2>
-            <p>
-                ジャンル別・ナンバー別の練習動画を確認できます。<br>
-                ボタンでカテゴリごとに絞り込めます。
-            </p>
+    <main class="member-main">
+
+        <section class="member-section">
+            <h2>お知らせ</h2>
+            <div class="member-card-grid">
+
+                <div class="member-card">
+                    <h3>次回練習</h3>
+                    <p>次回の練習は 4月25日 18:00〜 です。</p>
+                </div>
+
+                <div class="member-card">
+                    <h3>思い出写真</h3>
+                    <p>イベントや練習の写真をまとめて見られます。</p>
+                    <a href="photos.html" class="member-link-btn">写真を見る</a>
+                </div>
+
+                <div class="member-card">
+                    <h3>連絡事項</h3>
+                    <p>衣装サイズの提出を今週中にお願いします。</p>
+                </div>
+
+            </div>
         </section>
 
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">すべて</button>
-            <button class="filter-btn" data-filter="hiphop">HIPHOP</button>
-            <button class="filter-btn" data-filter="jazz">JAZZ</button>
-            <button class="filter-btn" data-filter="lock">LOCK</button>
-            <button class="filter-btn" data-filter="waack">WAACK</button>
-            <button class="filter-btn" data-filter="girls">GIRLS</button>
-            <button class="filter-btn" data-filter="break">BREAK</button>
-            <button class="filter-btn" data-filter="other">その他</button>
-        </div>
+        <section class="member-section">
+            <h2>メンバー向けコンテンツ</h2>
+            <div class="member-card-grid">
 
-        <section class="video-grid">
+                <div class="member-card">
+                    <h3>練習動画</h3>
+                    <p>振り入れ動画や復習用動画を確認できます。</p>
+                    <a href="practicevideo.html" class="member-link-btn">
+                        練習動画を見る
+                    </a>
+                </div>
 
-            <div class="video-card" data-category="hiphop">
-                <div class="video-year">HIPHOP</div>
-                <div class="video-title">HIPHOP 練習動画</div>
-                <div class="video-category">HIPHOP</div>
-                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
+                <div class="member-card">
+                    <h3>共有資料</h3>
+                    <p>出演資料、タイムテーブル、持ち物一覧などを掲載できます。</p>
+                    <a href="#" class="member-link-btn">開く</a>
+                </div>
+
+                <div class="member-card">
+                    <h3>過去公演</h3>
+                    <p>過去の公演の動画が見られます。</p>
+                    <a href="dancevideo.html" class="member-link-btn">
+                        過去公演を見る
+                    </a>
+                </div>
+
             </div>
+        </section>
 
-            <div class="video-card" data-category="jazz">
-                <div class="video-year">JAZZ</div>
-                <div class="video-title">JAZZ 練習動画</div>
-                <div class="video-category">JAZZ</div>
-                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
+        <section class="member-section">
+            <h2>今月のメッセージ</h2>
+            <div class="member-message-box">
+                <p>
+                    いつも活動ありがとう！<br>
+                    一人ひとりの頑張りが、W+I&S のステージをつくっています。<br>
+                    これからも最高の作品を一緒につくっていこう。
+                </p>
             </div>
-
-            <div class="video-card" data-category="lock">
-                <div class="video-year">LOCK</div>
-                <div class="video-title">LOCK 練習動画</div>
-                <div class="video-category">LOCK</div>
-                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
-            </div>
-
-            <div class="video-card" data-category="waack">
-                <div class="video-year">WAACK</div>
-                <div class="video-title">WAACK 練習動画</div>
-                <div class="video-category">WAACK</div>
-                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
-            </div>
-
-            <div class="video-card" data-category="girls">
-                <div class="video-year">GIRLS</div>
-                <div class="video-title">GIRLS 練習動画</div>
-                <div class="video-category">GIRLS</div>
-                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
-            </div>
-
-            <div class="video-card" data-category="break">
-                <div class="video-year">BREAK</div>
-                <div class="video-title">BREAK 練習動画</div>
-                <div class="video-category">BREAK</div>
-                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
-            </div>
-
-            <div class="video-card" data-category="other">
-                <div class="video-year">全体</div>
-                <div class="video-title">全体練習・通し動画</div>
-                <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
-            </div>
-
         </section>
 
     </main>
-
-    <footer>
-        <p>&copy; Dance Unit W+I&S</p>
-    </footer>
 
     <script>
         const memberId = localStorage.getItem("memberStudentId");
@@ -123,28 +151,6 @@
             alert("ログアウトしました。");
             location.href = "login.html";
         }
-
-        const filterButtons = document.querySelectorAll(".filter-btn");
-        const videoCards = document.querySelectorAll(".video-card");
-
-        filterButtons.forEach(button => {
-            button.addEventListener("click", () => {
-                const filter = button.dataset.filter;
-
-                filterButtons.forEach(btn => btn.classList.remove("active"));
-                button.classList.add("active");
-
-                videoCards.forEach(card => {
-                    const category = card.dataset.category;
-
-                    if (filter === "all" || category === filter) {
-                        card.classList.remove("hidden");
-                    } else {
-                        card.classList.add("hidden");
-                    }
-                });
-            });
-        });
     </script>
 
 </body>

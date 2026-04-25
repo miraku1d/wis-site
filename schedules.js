@@ -23,15 +23,15 @@ const weeklyGenreRules = {
 const runthroughSchedules = [
     {
         date: "2026-04-04",
-        time: "時間未定",
+        time: "10:00〜20:00",
         title: "第1回通し",
-        place: "場所未定",
+        place: "フィット",
         genres: allGenres,
         type: "通し"
     },
     {
         date: "2026-04-19",
-        time: "時間未定",
+        time: "10:00〜20:00",
         title: "第2回通し",
         place: "アリーナ",
         genres: allGenres,
@@ -39,7 +39,7 @@ const runthroughSchedules = [
     },
     {
         date: "2026-05-06",
-        time: "時間未定",
+        time: "8:00〜21:00",
         title: "第3回通し",
         place: "白浜フローラルホール",
         genres: allGenres,
@@ -47,7 +47,7 @@ const runthroughSchedules = [
     },
     {
         date: "2026-05-10",
-        time: "時間未定",
+        time: "10:00〜20:00",
         title: "第4回通し",
         place: "アリーナ",
         genres: allGenres,
@@ -55,7 +55,7 @@ const runthroughSchedules = [
     },
     {
         date: "2026-05-13",
-        time: "時間未定",
+        time: "18:10〜20:40",
         title: "第5回通し",
         place: "湘南台文化センター",
         genres: allGenres,
@@ -63,7 +63,7 @@ const runthroughSchedules = [
     },
     {
         date: "2026-05-28",
-        time: "時間未定",
+        time: "18:10〜20:40",
         title: "第6回通し",
         place: "湘南台文化センター",
         genres: allGenres,
@@ -103,6 +103,18 @@ function isBetween(dateString, startString, endString) {
     return date >= start && date <= end;
 }
 
+function getDefaultTime(day) {
+    if (day === 0 || day === 6) {
+        return "10:00〜20:00";
+    }
+
+    return "18:10〜20:40";
+}
+
+function getDefaultPlace() {
+    return "フィット";
+}
+
 function generatePracticeSchedules() {
     const schedules = [];
 
@@ -118,28 +130,31 @@ function generatePracticeSchedules() {
         const day = current.getDay();
 
         let title = "通常練習";
-        let place = "場所未定";
-        let time = "時間未定";
+        let place = getDefaultPlace();
+        let time = getDefaultTime(day);
         let genres = weeklyGenreRules[day];
         let type = "練習";
 
         if (isBetween(dateString, "2026-05-03", "2026-05-06")) {
             title = "合宿";
             place = "白浜フローラルホール";
+            time = "8:00〜21:00";
             genres = allGenres;
             type = "合宿";
         }
 
         if (isBetween(dateString, "2026-06-09", "2026-06-12")) {
             title = "小屋入り期間";
-            place = "会場";
+            place = "湘南台文化センター";
+            time = "10:00〜19:00";
             genres = allGenres;
             type = "小屋入り";
         }
 
         if (dateString === "2026-06-13") {
             title = "本番";
-            place = "本番会場";
+            place = "湘南台文化センター";
+            time = "本番時間";
             genres = allGenres;
             type = "本番";
         }

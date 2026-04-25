@@ -1,39 +1,231 @@
-<!-- フィルターボタンに追加 -->
-<div class="filter-buttons">
-    <button class="filter-btn active" data-filter="all">すべて</button>
-    <button class="filter-btn" data-filter="hiphop">HIPHOP</button>
-    <button class="filter-btn" data-filter="jazz">JAZZ</button>
-    <button class="filter-btn" data-filter="lock">LOCK</button>
-    <button class="filter-btn" data-filter="waack">WAACK</button>
-    <button class="filter-btn" data-filter="girls">GIRLS</button>
-    <button class="filter-btn" data-filter="break">BREAK</button>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習動画 | Dance Unit W+I&S</title>
+    <link rel="stylesheet" href="style.css">
 
-    <!-- 追加 -->
-    <button class="filter-btn" data-filter="house">HOUSE</button>
-    <button class="filter-btn" data-filter="pop">POP</button>
+    <script>
+        if (localStorage.getItem("memberAuthenticated") !== "true") {
+            alert("このページを見るにはログインが必要です。");
+            location.href = "login.html";
+        }
+    </script>
+</head>
 
-    <button class="filter-btn" data-filter="other">その他</button>
-</div>
+<body class="video-page">
 
-<!-- 動画カードに追加 -->
-<section class="video-grid">
+    <header class="video-header">
+        <h1>練習動画</h1>
+        <p>Dance Unit W+I&S メンバー限定 練習動画ページ</p>
+        <a href="member.html" class="back-home">メンバー限定ページに戻る</a>
+    </header>
 
-    <!-- 既存はそのまま -->
+    <main class="video-main">
 
-    <!-- HOUSE -->
-    <div class="video-card" data-category="house">
-        <div class="video-year">HOUSE</div>
-        <div class="video-title">HOUSE 練習動画</div>
-        <div class="video-category">HOUSE</div>
-        <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
-    </div>
+        <div class="video-top-bar">
+            <div class="video-status">
+                ログイン中：
+                <span id="memberIdDisplay">メンバー</span>
+            </div>
+            <button class="logout-btn" onclick="logout()">ログアウト</button>
+        </div>
 
-    <!-- POP -->
-    <div class="video-card" data-category="pop">
-        <div class="video-year">POP</div>
-        <div class="video-title">POP 練習動画</div>
-        <div class="video-category">POP</div>
-        <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
-    </div>
+        <section class="video-intro">
+            <h2>Practice Movie</h2>
+            <p>
+                ジャンル別・通し動画を確認できます。<br>
+                ボタンでカテゴリごとに絞り込めます。
+            </p>
+        </section>
 
-</section>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">すべて</button>
+            <button class="filter-btn" data-filter="full">通し動画</button>
+            <button class="filter-btn" data-filter="hiphop">HIPHOP</button>
+            <button class="filter-btn" data-filter="jazz">JAZZ</button>
+            <button class="filter-btn" data-filter="lock">LOCK</button>
+            <button class="filter-btn" data-filter="waack">WAACK</button>
+            <button class="filter-btn" data-filter="girls">GIRLS</button>
+            <button class="filter-btn" data-filter="break">BREAK</button>
+            <button class="filter-btn" data-filter="house">HOUSE</button>
+            <button class="filter-btn" data-filter="pop">POP</button>
+            <button class="filter-btn" data-filter="other">その他</button>
+        </div>
+
+        <section class="video-grid">
+
+            <div class="video-card" data-category="full">
+                <div class="video-year">2021年</div>
+                <div class="video-title">18引退公演『Re:W』通し動画</div>
+                <div class="video-category">通し動画</div>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdG9EaDgxrtqs7YTczOlcUig" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="full">
+                <div class="video-year">2022年</div>
+                <div class="video-title">20春公演『宴』通し動画</div>
+                <div class="video-category">通し動画</div>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdGAlCLM9_P6mXccj_uTS-v-" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="full">
+                <div class="video-year">2022年</div>
+                <div class="video-title">19引退公演『破竹之勢』通し動画</div>
+                <div class="video-category">通し動画</div>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdG7IG3nDcvgKpg5qZJgAwEI" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="full">
+                <div class="video-year">2023年</div>
+                <div class="video-title">21七夕祭『the theater』通し動画</div>
+                <div class="video-category">通し動画</div>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdE00Y5OaeaLqwHSZM1XaNeb" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="full">
+                <div class="video-year">2023年</div>
+                <div class="video-title">20引退公演『酣』通し動画</div>
+                <div class="video-category">通し動画</div>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdFlwMayNbAwc5kTyBXlrFme" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="full">
+                <div class="video-year">2024年</div>
+                <div class="video-title">22春公演『4:27』通し動画</div>
+                <div class="video-category">通し動画</div>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdHdpCyo7hjqkRQ9CLFHuu0b" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="full">
+                <div class="video-year">2024年</div>
+                <div class="video-title">21引退公演『ひかれ』通し動画</div>
+                <div class="video-category">通し動画</div>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdH5XrHmhBFgo04EJEI2j-ZA" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="full">
+                <div class="video-year">2025年</div>
+                <div class="video-title">23春公演『VISTA』通し動画</div>
+                <div class="video-category">通し動画</div>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEfFp-gPiG1dffhBJ2gQBkI" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="full">
+                <div class="video-year">2025年</div>
+                <div class="video-title">22引退公演『Wand』通し動画</div>
+                <div class="video-category">通し動画</div>
+                <a href="https://www.youtube.com/playlist?app=desktop&list=PLhkctw2ZtEdGz7H--J4VPxTFE8HBJSZeO" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="hiphop">
+                <div class="video-year">HIPHOP</div>
+                <div class="video-title">HIPHOP 練習動画</div>
+                <div class="video-category">HIPHOP</div>
+                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="jazz">
+                <div class="video-year">JAZZ</div>
+                <div class="video-title">JAZZ 練習動画</div>
+                <div class="video-category">JAZZ</div>
+                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="lock">
+                <div class="video-year">LOCK</div>
+                <div class="video-title">LOCK 練習動画</div>
+                <div class="video-category">LOCK</div>
+                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="waack">
+                <div class="video-year">WAACK</div>
+                <div class="video-title">WAACK 練習動画</div>
+                <div class="video-category">WAACK</div>
+                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="girls">
+                <div class="video-year">GIRLS</div>
+                <div class="video-title">GIRLS 練習動画</div>
+                <div class="video-category">GIRLS</div>
+                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="break">
+                <div class="video-year">BREAK</div>
+                <div class="video-title">BREAK 練習動画</div>
+                <div class="video-category">BREAK</div>
+                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="house">
+                <div class="video-year">HOUSE</div>
+                <div class="video-title">HOUSE 練習動画</div>
+                <div class="video-category">HOUSE</div>
+                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="pop">
+                <div class="video-year">POP</div>
+                <div class="video-title">POP 練習動画</div>
+                <div class="video-category">POP</div>
+                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+            <div class="video-card" data-category="other">
+                <div class="video-year">その他</div>
+                <div class="video-title">その他 練習動画</div>
+                <div class="video-category">その他</div>
+                <a href="https://www.youtube.com/" target="_blank" class="video-button">動画を見る</a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; Dance Unit W+I&S</p>
+    </footer>
+
+    <script>
+        const memberId = localStorage.getItem("memberStudentId");
+
+        if (memberId) {
+            document.getElementById("memberIdDisplay").textContent = memberId;
+        }
+
+        function logout() {
+            localStorage.removeItem("memberAuthenticated");
+            localStorage.removeItem("memberStudentId");
+            alert("ログアウトしました。");
+            location.href = "login.html";
+        }
+
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const videoCards = document.querySelectorAll(".video-card");
+
+        filterButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const filter = button.dataset.filter;
+
+                filterButtons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+
+                videoCards.forEach(card => {
+                    const category = card.dataset.category;
+
+                    if (filter === "all" || category === filter) {
+                        card.classList.remove("hidden");
+                    } else {
+                        card.classList.add("hidden");
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

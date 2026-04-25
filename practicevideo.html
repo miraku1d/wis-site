@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>過去公演通し動画 | Dance Unit W+I&S</title>
+    <title>練習動画 | Dance Unit W+I&S</title>
     <link rel="stylesheet" href="style.css">
 
     <script>
@@ -12,211 +12,13 @@
             location.href = "login.html";
         }
     </script>
-
-    <style>
-        body.video-page {
-            margin: 0;
-            font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
-            background: #f8f9fc;
-            color: #333;
-        }
-
-        .video-header {
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-                        url("images/dance-header.jpg") center/cover no-repeat;
-            color: white;
-            text-align: center;
-            padding: 100px 20px 80px;
-        }
-
-        .video-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .video-header p {
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-        }
-
-        .back-home {
-            display: inline-block;
-            padding: 12px 24px;
-            background: white;
-            color: #333;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .back-home:hover {
-            background: #f0f0f0;
-        }
-
-        .video-main {
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 20px 60px;
-        }
-
-        .video-intro {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .video-intro h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .video-intro p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .video-top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .video-status {
-            font-size: 0.95rem;
-            color: #555;
-            background: #fff;
-            padding: 10px 16px;
-            border-radius: 999px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-
-        .logout-btn {
-            display: inline-block;
-            padding: 10px 18px;
-            border: none;
-            border-radius: 999px;
-            background: #ff4d6d;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-
-        .logout-btn:hover {
-            background: #e63b5d;
-        }
-
-        .filter-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 35px;
-        }
-
-        .filter-btn {
-            padding: 10px 18px;
-            border: none;
-            border-radius: 999px;
-            background: white;
-            color: #333;
-            font-size: 0.95rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: 0.3s;
-        }
-
-        .filter-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .filter-btn.active {
-            background: #ff4d6d;
-            color: white;
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-        }
-
-        .video-card {
-            background: white;
-            border-radius: 18px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-            padding: 25px 20px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 24px rgba(0,0,0,0.12);
-        }
-
-        .video-card.hidden {
-            display: none;
-        }
-
-        .video-year {
-            font-size: 0.95rem;
-            color: #888;
-            margin-bottom: 8px;
-        }
-
-        .video-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #222;
-        }
-
-        .video-category {
-            display: inline-block;
-            margin-bottom: 18px;
-            padding: 6px 12px;
-            border-radius: 999px;
-            font-size: 0.85rem;
-            background: #ffe3ea;
-            color: #d6336c;
-            font-weight: bold;
-        }
-
-        .video-button {
-            display: inline-block;
-            padding: 12px 20px;
-            background: #ff4d6d;
-            color: white;
-            text-decoration: none;
-            border-radius: 999px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .video-button:hover {
-            background: #e63b5d;
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px 15px;
-            background: #222;
-            color: white;
-            font-size: 0.95rem;
-        }
-    </style>
 </head>
+
 <body class="video-page">
 
     <header class="video-header">
-        <h1>過去公演動画</h1>
-        <p>Dance Unit W+I&S のこれまでの公演動画をまとめました</p>
+        <h1>練習動画</h1>
+        <p>Dance Unit W+I&S メンバー限定 練習動画ページ</p>
         <a href="member.html" class="back-home">メンバー限定ページに戻る</a>
     </header>
 
@@ -230,169 +32,75 @@
         </div>
 
         <section class="video-intro">
-            <h2>Archive Movie</h2>
+            <h2>Practice Movie</h2>
             <p>
-                各公演の動画をYouTubeで視聴できます。<br>
+                ジャンル別・ナンバー別の練習動画を確認できます。<br>
                 ボタンでカテゴリごとに絞り込めます。
             </p>
         </section>
 
         <div class="filter-buttons">
             <button class="filter-btn active" data-filter="all">すべて</button>
-            <button class="filter-btn" data-filter="spring">春公演</button>
-            <button class="filter-btn" data-filter="retirement">引退公演</button>
+            <button class="filter-btn" data-filter="hiphop">HIPHOP</button>
+            <button class="filter-btn" data-filter="jazz">JAZZ</button>
+            <button class="filter-btn" data-filter="lock">LOCK</button>
+            <button class="filter-btn" data-filter="waack">WAACK</button>
+            <button class="filter-btn" data-filter="girls">GIRLS</button>
+            <button class="filter-btn" data-filter="break">BREAK</button>
             <button class="filter-btn" data-filter="other">その他</button>
         </div>
 
         <section class="video-grid">
-            <div class="video-card" data-category="spring">
-                <div class="video-year">2020年</div>
-                <div class="video-title">19春公演</div>
-                <div class="video-category">春公演</div>
-                <a href="ここにYouTubeリンクを貼る" class="video-button">動画を見る</a>
+
+            <div class="video-card" data-category="hiphop">
+                <div class="video-year">HIPHOP</div>
+                <div class="video-title">HIPHOP 練習動画</div>
+                <div class="video-category">HIPHOP</div>
+                <a href="ここにYouTubeリンクを貼る" target="_blank" class="video-button">動画を見る</a>
             </div>
 
-            <div class="video-card" data-category="retirement">
-                <div class="video-year">2020年</div>
-                <div class="video-title">17引退公演</div>
-                <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEs08GOa6BltvJGGhuqUx63&si=CP_YNKOUjIIauD35" class="video-button">動画を見る</a>
+            <div class="video-card" data-category="jazz">
+                <div class="video-year">JAZZ</div>
+                <div class="video-title">JAZZ 練習動画</div>
+                <div class="video-category">JAZZ</div>
+                <a href="ここにYouTubeリンクを貼る" target="_blank" class="video-button">動画を見る</a>
             </div>
 
-            <div class="video-card" data-category="retirement">
-                <div class="video-year">2021年</div>
-                <div class="video-title">18引退公演『Re:W』</div>
-                <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdG9EaDgxrtqs7YTczOlcUig" class="video-button">動画を見る</a>
+            <div class="video-card" data-category="lock">
+                <div class="video-year">LOCK</div>
+                <div class="video-title">LOCK 練習動画</div>
+                <div class="video-category">LOCK</div>
+                <a href="ここにYouTubeリンクを貼る" target="_blank" class="video-button">動画を見る</a>
             </div>
 
-            <div class="video-card" data-category="other">
-                <div class="video-year">2021年</div>
-                <div class="video-title">20オドルベ</div>
-                <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEcMYdf_wSuSl10-kX3Jldd" class="video-button">動画を見る</a>
+            <div class="video-card" data-category="waack">
+                <div class="video-year">WAACK</div>
+                <div class="video-title">WAACK 練習動画</div>
+                <div class="video-category">WAACK</div>
+                <a href="ここにYouTubeリンクを貼る" target="_blank" class="video-button">動画を見る</a>
             </div>
 
-            <div class="video-card" data-category="other">
-                <div class="video-year">2022年</div>
-                <div class="video-title">18四年展</div>
-                <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEZUZGpeQn8EqlRCy9jycg2&si=N3EfHpstYIkEpA0m" class="video-button">動画を見る</a>
+            <div class="video-card" data-category="girls">
+                <div class="video-year">GIRLS</div>
+                <div class="video-title">GIRLS 練習動画</div>
+                <div class="video-category">GIRLS</div>
+                <a href="ここにYouTubeリンクを貼る" target="_blank" class="video-button">動画を見る</a>
             </div>
 
-            <div class="video-card" data-category="spring">
-                <div class="video-year">2022年</div>
-                <div class="video-title">20春公演『宴』</div>
-                <div class="video-category">春公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdGAlCLM9_P6mXccj_uTS-v-" class="video-button">動画を見る</a>
-            </div>
-
-            <div class="video-card" data-category="retirement">
-                <div class="video-year">2022年</div>
-                <div class="video-title">19引退公演『破竹之勢』</div>
-                <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdG7IG3nDcvgKpg5qZJgAwEI" class="video-button">動画を見る</a>
+            <div class="video-card" data-category="break">
+                <div class="video-year">BREAK</div>
+                <div class="video-title">BREAK 練習動画</div>
+                <div class="video-category">BREAK</div>
+                <a href="ここにYouTubeリンクを貼る" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="other">
-                <div class="video-year">2022年</div>
-                <div class="video-title">21オドルベ</div>
+                <div class="video-year">全体</div>
+                <div class="video-title">全体練習・通し動画</div>
                 <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdGSd4WEiaOwYgGbgVD45KK9" class="video-button">動画を見る</a>
+                <a href="ここにYouTubeリンクを貼る" target="_blank" class="video-button">動画を見る</a>
             </div>
 
-            <div class="video-card" data-category="other">
-                <div class="video-year">2023年</div>
-                <div class="video-title">16アダルベ</div>
-                <div class="video-category">その他</div>
-                <a href="youtube.com/playlist?list=PLhkctw2ZtEdG5iL-rTGwfq5gtFuZrlndp&si=CxtmhF1xaQ0KugjU" class="video-button">動画を見る</a>
-            </div>
-
-
-            <div class="video-card" data-category="other">
-                <div class="video-year">2023年</div>
-                <div class="video-title">21七夕祭『the theater』</div>
-                <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdE00Y5OaeaLqwHSZM1XaNeb" class="video-button">動画を見る</a>
-            </div>
-
-            <div class="video-card" data-category="other">
-                <div class="video-year">2023年</div>
-                <div class="video-title">30周年公演『つくろう』</div>
-                <div class="video-category">その他</div>
-                <a href="youtube.com/playlist?list=PLhkctw2ZtEdGLF8Gwz4hkcLd-YZPTG5CO&si=RoqsJLz3dBuDd95E" class="video-button">動画を見る</a>
-            </div>
-
-            <div class="video-card" data-category="retirement">
-                <div class="video-year">2023年</div>
-                <div class="video-title">20引退公演『酣』</div>
-                <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdFlwMayNbAwc5kTyBXlrFme" class="video-button">動画を見る</a>
-            </div>
-
-            <div class="video-card" data-category="other">
-                <div class="video-year">2023年</div>
-                <div class="video-title">20三田祭</div>
-                <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdHg9-3z-WnJEQTBCnEOMsvS" class="video-button">動画を見る</a>
-            </div>
-
-            <div class="video-card" data-category="other">
-                <div class="video-year">2023年</div>
-                <div class="video-title">22オドルベ</div>
-                <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?app=desktop&list=PLhkctw2ZtEdGDmjeQABzjiGxvsnsLeIWu" class="video-button">動画を見る</a>
-            </div>
-
-            <div class="video-card" data-category="other">
-                <div class="video-year">2024年</div>
-                <div class="video-title">17アダルベ</div>
-                <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEnd2W9xg6KZBLCUIClzL6F&si=Kgphps4lNBenaW-o" class="video-button">動画を見る</a>
-            </div>
-
-            <div class="video-card" data-category="spring">
-                <div class="video-year">2024年</div>
-                <div class="video-title">22春公演『4:27』</div>
-                <div class="video-category">春公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdHdpCyo7hjqkRQ9CLFHuu0b" class="video-button">動画を見る</a>
-            </div>
-
-            <div class="video-card" data-category="retirement">
-                <div class="video-year">2024年</div>
-                <div class="video-title">21引退公演『ひかれ』</div>
-                <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdH5XrHmhBFgo04EJEI2j-ZA" class="video-button">動画を見る</a>
-            </div>
-
-            <div class="video-card" data-category="other">
-                <div class="video-year">2024年</div>
-                <div class="video-title">23オドルベ</div>
-                <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?app=desktop&list=PLhkctw2ZtEdHBJc5GIlPPUG09uKmSfKuD" class="video-button">動画を見る</a>
-            </div>
-
-            <div class="video-card" data-category="spring">
-                <div class="video-year">2025年</div>
-                <div class="video-title">23春公演『VISTA』</div>
-                <div class="video-category">春公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEfFp-gPiG1dffhBJ2gQBkI" class="video-button">動画を見る</a>
-            </div>
-
-            <div class="video-card" data-category="retirement">
-                <div class="video-year">2025年</div>
-                <div class="video-title">22引退公演『Wand』</div>
-                <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?app=desktop&list=PLhkctw2ZtEdGz7H--J4VPxTFE8HBJSZeO" class="video-button">動画を見る</a>
-            </div>
-
-             <div class="video-card" data-category="other">
-                <div class="video-year">2025年</div>
-                <div class="video-title">24オドルベ</div>
-                <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?app=desktop&list=PLhkctw2ZtEdHdkzQDiHq4s1WU5O3fCMAB" class="video-button">動画を見る</a>
-            </div>
-            
         </section>
     </main>
 

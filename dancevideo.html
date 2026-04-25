@@ -16,63 +16,98 @@
     <style>
         body.video-page {
             margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top left, rgba(201, 168, 106, 0.18), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(120, 90, 45, 0.14), transparent 32%),
+                linear-gradient(135deg, #efe3d4 0%, #e8d7c2 48%, #f8f3eb 100%);
             font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
-            background: #f8f9fc;
-            color: #333;
+            color: #2b241d;
         }
 
         .video-header {
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-                        url("images/dance-header.jpg") center/cover no-repeat;
-            color: white;
+            min-height: 310px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
             text-align: center;
-            padding: 100px 20px 80px;
+            color: #fff;
+            background:
+                linear-gradient(rgba(0,0,0,0.48), rgba(0,0,0,0.38)),
+                linear-gradient(135deg, #17110c, #5a4024);
+            position: relative;
+            overflow: hidden;
+            padding: 40px 20px;
+        }
+
+        .video-header::before {
+            content: "";
+            position: absolute;
+            width: 430px;
+            height: 430px;
+            border-radius: 50%;
+            background: rgba(201, 168, 106, 0.18);
+            top: -180px;
+            right: -120px;
+            filter: blur(2px);
+        }
+
+        .video-header::after {
+            content: "ARCHIVE";
+            position: absolute;
+            right: 35px;
+            bottom: 8px;
+            font-size: 6.2rem;
+            font-weight: bold;
+            letter-spacing: 0.12em;
+            color: rgba(255,255,255,0.06);
+            pointer-events: none;
         }
 
         .video-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            font-size: 3rem;
+            margin: 0 0 12px;
+            letter-spacing: 0.12em;
         }
 
         .video-header p {
-            font-size: 1.1rem;
-            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            margin: 0 0 24px;
+            font-size: 1rem;
+            opacity: 0.92;
+            letter-spacing: 0.05em;
         }
 
         .back-home {
+            position: relative;
+            z-index: 1;
             display: inline-block;
-            padding: 12px 24px;
-            background: white;
-            color: #333;
+            padding: 11px 24px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.14);
+            color: #fff;
             text-decoration: none;
-            border-radius: 30px;
             font-weight: bold;
+            border: 1px solid rgba(255,255,255,0.35);
+            backdrop-filter: blur(8px);
             transition: 0.3s;
         }
 
         .back-home:hover {
-            background: #f0f0f0;
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
         }
 
         .video-main {
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 20px 60px;
-        }
-
-        .video-intro {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .video-intro h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .video-intro p {
-            color: #666;
-            line-height: 1.8;
+            max-width: 1150px;
+            margin: -28px auto 70px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 3;
         }
 
         .video-top-bar {
@@ -81,83 +116,164 @@
             align-items: center;
             gap: 12px;
             flex-wrap: wrap;
-            margin-bottom: 30px;
+            margin-bottom: 36px;
         }
 
         .video-status {
             font-size: 0.95rem;
-            color: #555;
-            background: #fff;
-            padding: 10px 16px;
+            color: #3a3024;
+            background: rgba(255,255,255,0.94);
+            padding: 12px 18px;
             border-radius: 999px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.14);
+            border: 1px solid rgba(201,168,106,0.35);
+            backdrop-filter: blur(10px);
+        }
+
+        .video-status span {
+            font-weight: bold;
+            color: #8a5d24;
         }
 
         .logout-btn {
             display: inline-block;
-            padding: 10px 18px;
+            padding: 12px 20px;
             border: none;
             border-radius: 999px;
-            background: #ff4d6d;
+            background: linear-gradient(135deg, #ff4d6d, #b91c3a);
             color: white;
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 24px rgba(185,28,58,0.25);
         }
 
         .logout-btn:hover {
-            background: #e63b5d;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(185,28,58,0.32);
+        }
+
+        .video-intro {
+            background: rgba(255,255,255,0.94);
+            border-radius: 26px;
+            padding: 30px;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+            border: 1px solid rgba(201,168,106,0.24);
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-intro::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(201,168,106,0.18), transparent 38%);
+            pointer-events: none;
+        }
+
+        .video-intro h2 {
+            position: relative;
+            display: inline-block;
+            margin: 0 0 12px;
+            font-size: 1.8rem;
+            color: #2b241d;
+            letter-spacing: 0.08em;
+            padding-left: 16px;
+        }
+
+        .video-intro h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 28px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #c9a86a, #6f4c25);
+        }
+
+        .video-intro p {
+            position: relative;
+            margin: 0;
+            color: #5a5147;
+            line-height: 1.9;
         }
 
         .filter-buttons {
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 35px;
+            gap: 10px;
+            justify-content: center;
+            margin: 0 0 30px;
+            padding: 22px;
+            border-radius: 24px;
+            background: rgba(255,255,255,0.72);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            border: 1px solid rgba(201,168,106,0.22);
         }
 
         .filter-btn {
-            padding: 10px 18px;
-            border: none;
+            border: 1px solid rgba(120, 90, 45, 0.35);
+            background: rgba(255,255,255,0.92);
+            color: #3a3024;
+            padding: 10px 17px;
             border-radius: 999px;
-            background: white;
-            color: #333;
-            font-size: 0.95rem;
-            font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: 0.3s;
+            font-weight: bold;
+            letter-spacing: 0.03em;
+            transition: 0.25s;
+            box-shadow: 0 5px 14px rgba(0,0,0,0.08);
         }
 
         .filter-btn:hover {
             transform: translateY(-2px);
+            background: #fff7e8;
         }
 
         .filter-btn.active {
-            background: #ff4d6d;
-            color: white;
+            background: linear-gradient(135deg, #2f261b, #9a7746);
+            color: #fff;
+            border-color: #9a7746;
         }
 
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
         }
 
         .video-card {
-            background: white;
-            border-radius: 18px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-            padding: 25px 20px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            background: rgba(255,255,255,0.94);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+            border: 1px solid rgba(201,168,106,0.24);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .video-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(201,168,106,0.18), transparent 40%),
+                radial-gradient(circle at top right, rgba(0,0,0,0.06), transparent 36%);
+            opacity: 0;
+            transition: 0.3s;
+            pointer-events: none;
         }
 
         .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+            transform: translateY(-6px);
+            box-shadow: 0 22px 54px rgba(0,0,0,0.18);
+        }
+
+        .video-card:hover::before {
+            opacity: 1;
         }
 
         .video-card.hidden {
@@ -165,57 +281,152 @@
         }
 
         .video-year {
-            font-size: 0.95rem;
-            color: #888;
-            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            margin-bottom: 14px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #2f261b, #8a6a3f);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: bold;
+            letter-spacing: 0.05em;
         }
 
         .video-title {
-            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+            min-height: 58px;
+            margin-bottom: 14px;
+            color: #2c241b;
+            font-size: 1.08rem;
             font-weight: bold;
-            margin-bottom: 10px;
-            color: #222;
+            line-height: 1.6;
         }
 
         .video-category {
+            position: relative;
+            z-index: 1;
             display: inline-block;
             margin-bottom: 18px;
             padding: 6px 12px;
             border-radius: 999px;
-            font-size: 0.85rem;
-            background: #ffe3ea;
-            color: #d6336c;
+            font-size: 0.82rem;
             font-weight: bold;
+            border: 1px solid rgba(201,168,106,0.32);
+        }
+
+        .video-card[data-category="spring"] .video-category {
+            background: #fff0bd;
+            color: #8a6500;
+        }
+
+        .video-card[data-category="retirement"] .video-category {
+            background: #ffe1e8;
+            color: #d9365f;
+        }
+
+        .video-card[data-category="other"] .video-category {
+            background: #e2f1ff;
+            color: #1c6ea4;
         }
 
         .video-button {
+            position: relative;
+            z-index: 1;
             display: inline-block;
-            padding: 12px 20px;
-            background: #ff4d6d;
-            color: white;
-            text-decoration: none;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            padding: 12px 18px;
             border-radius: 999px;
+            background: linear-gradient(135deg, #2f261b, #8a6a3f);
+            color: #fff;
+            text-decoration: none;
             font-weight: bold;
+            font-size: 0.92rem;
             transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(47,38,27,0.22);
         }
 
         .video-button:hover {
-            background: #e63b5d;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 26px rgba(47,38,27,0.3);
         }
 
         footer {
             text-align: center;
-            padding: 25px 15px;
-            background: #222;
-            color: white;
-            font-size: 0.95rem;
+            padding: 30px 20px;
+            color: #6b5b4a;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 980px) {
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .video-header h1 {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .video-header {
+                min-height: 250px;
+                padding: 34px 16px;
+            }
+
+            .video-header h1 {
+                font-size: 2rem;
+            }
+
+            .video-header::after {
+                font-size: 3.1rem;
+                right: 18px;
+            }
+
+            .video-main {
+                margin-top: -22px;
+                padding: 0 14px;
+            }
+
+            .video-top-bar {
+                margin-bottom: 26px;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-intro,
+            .filter-buttons,
+            .video-card {
+                border-radius: 20px;
+            }
+
+            .video-intro {
+                padding: 24px 20px;
+            }
+
+            .filter-buttons {
+                justify-content: flex-start;
+                padding: 18px;
+            }
+
+            .filter-btn {
+                padding: 8px 13px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
+
 <body class="video-page">
 
     <header class="video-header">
-        <h1>過去公演動画</h1>
+        <h1>Archive Movie</h1>
         <p>Dance Unit W+I&S のこれまでの公演動画をまとめました</p>
         <a href="member.html" class="back-home">メンバー限定ページに戻る</a>
     </header>
@@ -245,154 +456,154 @@
         </div>
 
         <section class="video-grid">
+
             <div class="video-card" data-category="spring">
                 <div class="video-year">2020年</div>
                 <div class="video-title">19春公演</div>
                 <div class="video-category">春公演</div>
-                <a href="ここにYouTubeリンクを貼る" class="video-button">動画を見る</a>
+                <a href="ここにYouTubeリンクを貼る" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="retirement">
                 <div class="video-year">2020年</div>
                 <div class="video-title">17引退公演</div>
                 <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEs08GOa6BltvJGGhuqUx63&si=CP_YNKOUjIIauD35" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEs08GOa6BltvJGGhuqUx63&si=CP_YNKOUjIIauD35" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="retirement">
                 <div class="video-year">2021年</div>
                 <div class="video-title">18引退公演『Re:W』</div>
                 <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdG9EaDgxrtqs7YTczOlcUig" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdG9EaDgxrtqs7YTczOlcUig" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="other">
                 <div class="video-year">2021年</div>
                 <div class="video-title">20オドルベ</div>
                 <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEcMYdf_wSuSl10-kX3Jldd" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEcMYdf_wSuSl10-kX3Jldd" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="other">
                 <div class="video-year">2022年</div>
                 <div class="video-title">18四年展</div>
                 <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEZUZGpeQn8EqlRCy9jycg2&si=N3EfHpstYIkEpA0m" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEZUZGpeQn8EqlRCy9jycg2&si=N3EfHpstYIkEpA0m" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="spring">
                 <div class="video-year">2022年</div>
                 <div class="video-title">20春公演『宴』</div>
                 <div class="video-category">春公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdGAlCLM9_P6mXccj_uTS-v-" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdGAlCLM9_P6mXccj_uTS-v-" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="retirement">
                 <div class="video-year">2022年</div>
                 <div class="video-title">19引退公演『破竹之勢』</div>
                 <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdG7IG3nDcvgKpg5qZJgAwEI" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdG7IG3nDcvgKpg5qZJgAwEI" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="other">
                 <div class="video-year">2022年</div>
                 <div class="video-title">21オドルベ</div>
                 <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdGSd4WEiaOwYgGbgVD45KK9" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdGSd4WEiaOwYgGbgVD45KK9" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="other">
                 <div class="video-year">2023年</div>
                 <div class="video-title">16アダルベ</div>
                 <div class="video-category">その他</div>
-                <a href="youtube.com/playlist?list=PLhkctw2ZtEdG5iL-rTGwfq5gtFuZrlndp&si=CxtmhF1xaQ0KugjU" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdG5iL-rTGwfq5gtFuZrlndp&si=CxtmhF1xaQ0KugjU" target="_blank" class="video-button">動画を見る</a>
             </div>
-
 
             <div class="video-card" data-category="other">
                 <div class="video-year">2023年</div>
                 <div class="video-title">21七夕祭『the theater』</div>
                 <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdE00Y5OaeaLqwHSZM1XaNeb" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdE00Y5OaeaLqwHSZM1XaNeb" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="other">
                 <div class="video-year">2023年</div>
                 <div class="video-title">30周年公演『つくろう』</div>
                 <div class="video-category">その他</div>
-                <a href="youtube.com/playlist?list=PLhkctw2ZtEdGLF8Gwz4hkcLd-YZPTG5CO&si=RoqsJLz3dBuDd95E" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdGLF8Gwz4hkcLd-YZPTG5CO&si=RoqsJLz3dBuDd95E" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="retirement">
                 <div class="video-year">2023年</div>
                 <div class="video-title">20引退公演『酣』</div>
                 <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdFlwMayNbAwc5kTyBXlrFme" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdFlwMayNbAwc5kTyBXlrFme" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="other">
                 <div class="video-year">2023年</div>
                 <div class="video-title">20三田祭</div>
                 <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdHg9-3z-WnJEQTBCnEOMsvS" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdHg9-3z-WnJEQTBCnEOMsvS" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="other">
                 <div class="video-year">2023年</div>
                 <div class="video-title">22オドルベ</div>
                 <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?app=desktop&list=PLhkctw2ZtEdGDmjeQABzjiGxvsnsLeIWu" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?app=desktop&list=PLhkctw2ZtEdGDmjeQABzjiGxvsnsLeIWu" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="other">
                 <div class="video-year">2024年</div>
                 <div class="video-title">17アダルベ</div>
                 <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEnd2W9xg6KZBLCUIClzL6F&si=Kgphps4lNBenaW-o" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEnd2W9xg6KZBLCUIClzL6F&si=Kgphps4lNBenaW-o" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="spring">
                 <div class="video-year">2024年</div>
                 <div class="video-title">22春公演『4:27』</div>
                 <div class="video-category">春公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdHdpCyo7hjqkRQ9CLFHuu0b" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdHdpCyo7hjqkRQ9CLFHuu0b" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="retirement">
                 <div class="video-year">2024年</div>
                 <div class="video-title">21引退公演『ひかれ』</div>
                 <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdH5XrHmhBFgo04EJEI2j-ZA" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdH5XrHmhBFgo04EJEI2j-ZA" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="other">
                 <div class="video-year">2024年</div>
                 <div class="video-title">23オドルベ</div>
                 <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?app=desktop&list=PLhkctw2ZtEdHBJc5GIlPPUG09uKmSfKuD" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?app=desktop&list=PLhkctw2ZtEdHBJc5GIlPPUG09uKmSfKuD" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="spring">
                 <div class="video-year">2025年</div>
                 <div class="video-title">23春公演『VISTA』</div>
                 <div class="video-category">春公演</div>
-                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEfFp-gPiG1dffhBJ2gQBkI" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?list=PLhkctw2ZtEdEfFp-gPiG1dffhBJ2gQBkI" target="_blank" class="video-button">動画を見る</a>
             </div>
 
             <div class="video-card" data-category="retirement">
                 <div class="video-year">2025年</div>
                 <div class="video-title">22引退公演『Wand』</div>
                 <div class="video-category">引退公演</div>
-                <a href="https://www.youtube.com/playlist?app=desktop&list=PLhkctw2ZtEdGz7H--J4VPxTFE8HBJSZeO" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?app=desktop&list=PLhkctw2ZtEdGz7H--J4VPxTFE8HBJSZeO" target="_blank" class="video-button">動画を見る</a>
             </div>
 
-             <div class="video-card" data-category="other">
+            <div class="video-card" data-category="other">
                 <div class="video-year">2025年</div>
                 <div class="video-title">24オドルベ</div>
                 <div class="video-category">その他</div>
-                <a href="https://www.youtube.com/playlist?app=desktop&list=PLhkctw2ZtEdHdkzQDiHq4s1WU5O3fCMAB" class="video-button">動画を見る</a>
+                <a href="https://www.youtube.com/playlist?app=desktop&list=PLhkctw2ZtEdHdkzQDiHq4s1WU5O3fCMAB" target="_blank" class="video-button">動画を見る</a>
             </div>
-            
+
         </section>
     </main>
 
@@ -402,6 +613,7 @@
 
     <script>
         const memberId = localStorage.getItem("memberStudentId");
+
         if (memberId) {
             document.getElementById("memberIdDisplay").textContent = memberId;
         }

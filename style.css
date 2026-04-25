@@ -43,22 +43,11 @@ nav {
 nav a {
     color: black;
     text-decoration: none;
-    margin: 0 8px;
+    margin: 0 12px;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
     display: inline-block;
-
-    /* 高級感ポイント */
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-
-    padding: 10px 16px;
-    border-radius: 999px;
-
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-
-    transition: 0.25s;
+    transition: 0.2s;
 }
 
 nav a:hover {
@@ -597,4 +586,40 @@ footer {
 
 .member-main {
     margin: 20px auto 60px;
+}
+
+/* ===== ジャンル紹介ページ ===== */
+
+.genre-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.genre-card {
+    background: #ffffff;
+    padding: 26px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: 0.25s;
+}
+
+.genre-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.14);
+}
+
+.genre-card h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: #4f46e5;
+    letter-spacing: 1px;
+}
+
+.genre-card p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
 }

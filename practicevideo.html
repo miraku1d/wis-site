@@ -12,12 +12,408 @@
             location.href = "login.html";
         }
     </script>
+
+    <style>
+        body.video-page {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top left, rgba(201, 168, 106, 0.18), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(120, 90, 45, 0.14), transparent 32%),
+                linear-gradient(135deg, #efe3d4 0%, #e8d7c2 48%, #f8f3eb 100%);
+            font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+            color: #2b241d;
+        }
+
+        .video-header {
+            min-height: 310px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            color: #fff;
+            background:
+                linear-gradient(rgba(0,0,0,0.48), rgba(0,0,0,0.38)),
+                linear-gradient(135deg, #17110c, #5a4024);
+            position: relative;
+            overflow: hidden;
+            padding: 40px 20px;
+        }
+
+        .video-header::before {
+            content: "";
+            position: absolute;
+            width: 430px;
+            height: 430px;
+            border-radius: 50%;
+            background: rgba(201, 168, 106, 0.18);
+            top: -180px;
+            right: -120px;
+            filter: blur(2px);
+        }
+
+        .video-header::after {
+            content: "MOVIE";
+            position: absolute;
+            right: 35px;
+            bottom: 8px;
+            font-size: 6.5rem;
+            font-weight: bold;
+            letter-spacing: 0.12em;
+            color: rgba(255,255,255,0.06);
+            pointer-events: none;
+        }
+
+        .video-header h1 {
+            position: relative;
+            z-index: 1;
+            font-size: 3rem;
+            margin: 0 0 12px;
+            letter-spacing: 0.12em;
+        }
+
+        .video-header p {
+            position: relative;
+            z-index: 1;
+            margin: 0 0 24px;
+            font-size: 1rem;
+            opacity: 0.92;
+            letter-spacing: 0.05em;
+        }
+
+        .back-home {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            padding: 11px 24px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.14);
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid rgba(255,255,255,0.35);
+            backdrop-filter: blur(8px);
+            transition: 0.3s;
+        }
+
+        .back-home:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+
+        .video-main {
+            max-width: 1150px;
+            margin: -28px auto 70px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .video-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 36px;
+        }
+
+        .video-status {
+            font-size: 0.95rem;
+            color: #3a3024;
+            background: rgba(255,255,255,0.94);
+            padding: 12px 18px;
+            border-radius: 999px;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.14);
+            border: 1px solid rgba(201,168,106,0.35);
+            backdrop-filter: blur(10px);
+        }
+
+        .video-status span {
+            font-weight: bold;
+            color: #8a5d24;
+        }
+
+        .logout-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #ff4d6d, #b91c3a);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 24px rgba(185,28,58,0.25);
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(185,28,58,0.32);
+        }
+
+        .video-intro {
+            background: rgba(255,255,255,0.94);
+            border-radius: 26px;
+            padding: 30px;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+            border: 1px solid rgba(201,168,106,0.24);
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-intro::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(201,168,106,0.18), transparent 38%);
+            pointer-events: none;
+        }
+
+        .video-intro h2 {
+            position: relative;
+            display: inline-block;
+            margin: 0 0 12px;
+            font-size: 1.8rem;
+            color: #2b241d;
+            letter-spacing: 0.08em;
+            padding-left: 16px;
+        }
+
+        .video-intro h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 28px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #c9a86a, #6f4c25);
+        }
+
+        .video-intro p {
+            position: relative;
+            margin: 0;
+            color: #5a5147;
+            line-height: 1.9;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 0 0 30px;
+            padding: 22px;
+            border-radius: 24px;
+            background: rgba(255,255,255,0.72);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            border: 1px solid rgba(201,168,106,0.22);
+        }
+
+        .filter-btn {
+            border: 1px solid rgba(120, 90, 45, 0.35);
+            background: rgba(255,255,255,0.92);
+            color: #3a3024;
+            padding: 10px 17px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 0.03em;
+            transition: 0.25s;
+            box-shadow: 0 5px 14px rgba(0,0,0,0.08);
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            background: #fff7e8;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #2f261b, #9a7746);
+            color: #fff;
+            border-color: #9a7746;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .video-card {
+            position: relative;
+            background: rgba(255,255,255,0.94);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+            border: 1px solid rgba(201,168,106,0.24);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .video-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(201,168,106,0.18), transparent 40%),
+                radial-gradient(circle at top right, rgba(0,0,0,0.06), transparent 36%);
+            opacity: 0;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+
+        .video-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 54px rgba(0,0,0,0.18);
+        }
+
+        .video-card:hover::before {
+            opacity: 1;
+        }
+
+        .video-card.hidden {
+            display: none;
+        }
+
+        .video-year {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            margin-bottom: 14px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #2f261b, #8a6a3f);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+        }
+
+        .video-title {
+            position: relative;
+            z-index: 1;
+            min-height: 58px;
+            margin-bottom: 14px;
+            color: #2c241b;
+            font-size: 1.08rem;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+
+        .video-category {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: #fff3dc;
+            color: #7a5527;
+            font-size: 0.82rem;
+            font-weight: bold;
+            border: 1px solid rgba(201,168,106,0.32);
+        }
+
+        .video-button {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            padding: 12px 18px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #2f261b, #8a6a3f);
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.92rem;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(47,38,27,0.22);
+        }
+
+        .video-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 26px rgba(47,38,27,0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #6b5b4a;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 980px) {
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .video-header h1 {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .video-header {
+                min-height: 250px;
+                padding: 34px 16px;
+            }
+
+            .video-header h1 {
+                font-size: 2rem;
+            }
+
+            .video-header::after {
+                font-size: 3.2rem;
+                right: 18px;
+            }
+
+            .video-main {
+                margin-top: -22px;
+                padding: 0 14px;
+            }
+
+            .video-top-bar {
+                margin-bottom: 26px;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-intro,
+            .filter-buttons,
+            .video-card {
+                border-radius: 20px;
+            }
+
+            .video-intro {
+                padding: 24px 20px;
+            }
+
+            .filter-buttons {
+                justify-content: flex-start;
+                padding: 18px;
+            }
+
+            .filter-btn {
+                padding: 8px 13px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
 
 <body class="video-page">
 
     <header class="video-header">
-        <h1>練習動画</h1>
+        <h1>Practice Movie</h1>
         <p>Dance Unit W+I&S メンバー限定 練習動画ページ</p>
         <a href="member.html" class="back-home">メンバー限定ページに戻る</a>
     </header>

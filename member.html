@@ -75,11 +75,22 @@
 
         <section class="member-section">
             <h2>お知らせ</h2>
-            <div class="member-card-grid">
-
                 <div class="member-card">
-                    <h3>次回練習</h3>
-                    <p>次回の練習は 4月25日 18:00〜 です。</p>
+                    <h3>練習日程</h3>
+
+                    <p>
+                        <strong>次回練習：</strong><br>
+                         <span id="nextPractice">読み込み中...</span>
+                     </p>
+
+                    <p>
+                        <strong>次回通し：</strong><br>
+                        <span id="nextRunthrough">読み込み中...</span>
+                    </p>
+
+                    <a href="schedule.html" target="_blank" class="member-link-btn">
+                        練習日程を見る
+                    </a>
                 </div>
 
                 <div class="member-card">
@@ -139,19 +150,92 @@
     </main>
 
     <script>
-        const memberId = localStorage.getItem("memberStudentId");
+    const memberId = localStorage.getItem("memberStudentId");
 
-        if (memberId) {
-            document.getElementById("memberIdDisplay").textContent = memberId;
+    if (memberId) {
+        document.getElementById("memberIdDisplay").textContent = memberId;
+    }
+
+    function logout() {
+        localStorage.removeItem("memberAuthenticated");
+        localStorage.removeItem("memberStudentId");
+        alert("ログアウトしました。");
+        location.href = "login.html";
+    }
+
+    const practiceSchedules = [
+        {
+            date: "2026-04-25",
+            time: "18:00〜21:00",
+            title: "通常練習",
+            place: "大学体育館"
+        },
+        {
+            date: "2026-04-28",
+            time: "18:00〜21:00",
+            title: "ジャンル練習",
+            place: "湘南台文化センター"
+        },
+        {
+            date: "2026-05-01",
+            time: "18:00〜21:00",
+            title: "通常練習",
+            place: "大学体育館"
+        },
+        {
+            date: "2026-05-05",
+            time: "13:00〜18:00",
+            title: "通し",
+            place: "体育館"
+        },
+        {
+            date: "2026-05-12",
+            time: "13:00〜18:00",
+            title: "通し",
+            place: "体育館"
+        }
+    ];
+
+    function formatSchedule(schedule) {
+        const date = new Date(schedule.date);
+        const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const weekday = weekdays[date.getDay()];
+
+        return `${month}月${day}日（${weekday}） ${schedule.time}<br>${schedule.title}｜${schedule.place}`;
+    }
+
+    function updateNextSchedules() {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const futureSchedules = practiceSchedules
+            .filter(schedule => new Date(schedule.date) >= today)
+            .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        const nextPractice = futureSchedules.find(schedule => schedule.title !== "通し");
+        const nextRunthrough = futureSchedules.find(schedule => schedule.title === "通し");
+
+        const nextPracticeElement = document.getElementById("nextPractice");
+        const nextRunthroughElement = document.getElementById("nextRunthrough");
+
+        if (nextPracticeElement) {
+            nextPracticeElement.innerHTML = nextPractice
+                ? formatSchedule(nextPractice)
+                : "現在、予定されている練習はありません。";
         }
 
-        function logout() {
-            localStorage.removeItem("memberAuthenticated");
-            localStorage.removeItem("memberStudentId");
-            alert("ログアウトしました。");
-            location.href = "login.html";
+        if (nextRunthroughElement) {
+            nextRunthroughElement.innerHTML = nextRunthrough
+                ? formatSchedule(nextRunthrough)
+                : "現在、予定されている通しはありません。";
         }
-    </script>
+    }
+
+    updateNextSchedules();
+</script>
 
 </body>
 </html>

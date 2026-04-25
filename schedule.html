@@ -12,59 +12,275 @@
             location.href = "login.html";
         }
     </script>
+
+    <style>
+        body.schedule-page {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(20, 16, 12, 0.45), rgba(20, 16, 12, 0.45)),
+                linear-gradient(135deg, #f7f0e6, #efe4d1);
+            font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+        }
+
+        .schedule-hero {
+            padding: 70px 20px 45px;
+            text-align: center;
+            color: #fff;
+            background:
+                linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.35));
+        }
+
+        .schedule-hero h1 {
+            font-size: 2.4rem;
+            margin: 0 0 12px;
+            letter-spacing: 0.08em;
+        }
+
+        .schedule-hero p {
+            margin: 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .schedule-main {
+            max-width: 1150px;
+            margin: -20px auto 60px;
+            padding: 0 20px;
+        }
+
+        .schedule-panel {
+            background: rgba(255, 255, 255, 0.94);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 18px 45px rgba(0,0,0,0.16);
+        }
+
+        .schedule-note {
+            background: linear-gradient(135deg, #fffaf1, #f8ead3);
+            border-left: 5px solid #b08a4f;
+            border-radius: 14px;
+            padding: 16px 18px;
+            margin-bottom: 24px;
+            color: #3b3024;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .genre-filter-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 26px;
+        }
+
+        .genre-filter-btn {
+            border: 1px solid rgba(120, 90, 45, 0.35);
+            background: rgba(255, 255, 255, 0.9);
+            color: #3a3024;
+            padding: 10px 17px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 0.03em;
+            transition: 0.25s;
+            box-shadow: 0 5px 14px rgba(0,0,0,0.08);
+        }
+
+        .genre-filter-btn:hover {
+            transform: translateY(-2px);
+            background: #fff7e8;
+        }
+
+        .genre-filter-btn.active {
+            background: linear-gradient(135deg, #2f261b, #9a7746);
+            color: #fff;
+            border-color: #9a7746;
+        }
+
+        .schedule-table-wrap {
+            overflow-x: auto;
+            border-radius: 18px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            min-width: 800px;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            padding: 16px 14px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+
+        .schedule-table th {
+            background: #2c241b;
+            color: #fff;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .schedule-table tr:hover {
+            background: #fffaf1;
+        }
+
+        .schedule-type {
+            display: inline-block;
+            padding: 7px 13px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            background: #eeeeee;
+            color: #333;
+            white-space: nowrap;
+        }
+
+        .schedule-type.runthrough {
+            background: #ffe1e8;
+            color: #d9365f;
+        }
+
+        .schedule-type.camp {
+            background: #e2f1ff;
+            color: #1c6ea4;
+        }
+
+        .schedule-type.theater {
+            background: #f2e7ff;
+            color: #6c3ca8;
+        }
+
+        .schedule-type.performance {
+            background: #fff0bd;
+            color: #8a6500;
+        }
+
+        .genre-list {
+            line-height: 1.7;
+            color: #4a4035;
+        }
+
+        .empty-schedule {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+        }
+
+        .back-btn-area {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 26px;
+            border-radius: 999px;
+            background: #2c241b;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #6f5532;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 700px) {
+            .schedule-hero {
+                padding: 50px 16px 36px;
+            }
+
+            .schedule-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .schedule-main {
+                padding: 0 12px;
+            }
+
+            .schedule-panel {
+                padding: 18px;
+                border-radius: 20px;
+            }
+
+            .genre-filter-area {
+                justify-content: flex-start;
+            }
+
+            .genre-filter-btn {
+                padding: 8px 13px;
+                font-size: 0.85rem;
+            }
+
+            .schedule-table {
+                font-size: 0.88rem;
+            }
+        }
+    </style>
 </head>
 
 <body class="schedule-page">
 
+    <header class="schedule-hero">
+        <h1>Practice Schedule</h1>
+        <p>Dance Unit W+I&S メンバー練習日程</p>
+    </header>
+
     <main class="schedule-main">
+        <div class="schedule-panel">
 
-        <div class="schedule-title">
-            <h1>練習日程</h1>
-            <p>ジャンルを選択すると、該当する練習日程だけを表示できます。</p>
-        </div>
-
-        <div class="genre-filter-area">
-            <button class="genre-filter-btn active" data-genre="all">すべて</button>
-            <button class="genre-filter-btn" data-genre="hiphop">hiphop</button>
-            <button class="genre-filter-btn" data-genre="無house">無house</button>
-            <button class="genre-filter-btn" data-genre="限house">限house</button>
-            <button class="genre-filter-btn" data-genre="pop">pop</button>
-            <button class="genre-filter-btn" data-genre="lock">lock</button>
-            <button class="genre-filter-btn" data-genre="punking">punking</button>
-            <button class="genre-filter-btn" data-genre="jazz">jazz</button>
-            <button class="genre-filter-btn" data-genre="girls">girls</button>
-            <button class="genre-filter-btn" data-genre="break">break</button>
-        </div>
-
-        <div class="schedule-note">
-            <p>
-                月：無house・lock ／ 火：girls・punking ／ 水：break・限house ／ 木：jazz・OP ／ 金：hiphop・pop ／ 土日：全ジャンル
-            </p>
-            <p>
+            <div class="schedule-note">
+                <strong>基本スケジュール</strong><br>
+                月：無house・lock ／ 火：girls・punking ／ 水：break・限house ／ 木：jazz・OP ／ 金：hiphop・pop ／ 土日：全ジャンル<br>
                 5/3〜5/6は合宿、6/9〜6/12は小屋入り期間、6/13は本番です。
-            </p>
-        </div>
+            </div>
 
-        <div class="schedule-table-wrap">
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>日程</th>
-                        <th>時間</th>
-                        <th>内容</th>
-                        <th>ジャンル</th>
-                        <th>場所</th>
-                    </tr>
-                </thead>
-                <tbody id="scheduleTableBody">
-                </tbody>
-            </table>
-        </div>
+            <div class="genre-filter-area">
+                <button type="button" class="genre-filter-btn active" data-genre="all">すべて</button>
+                <button type="button" class="genre-filter-btn" data-genre="hiphop">hiphop</button>
+                <button type="button" class="genre-filter-btn" data-genre="無house">無house</button>
+                <button type="button" class="genre-filter-btn" data-genre="限house">限house</button>
+                <button type="button" class="genre-filter-btn" data-genre="pop">pop</button>
+                <button type="button" class="genre-filter-btn" data-genre="lock">lock</button>
+                <button type="button" class="genre-filter-btn" data-genre="punking">punking</button>
+                <button type="button" class="genre-filter-btn" data-genre="jazz">jazz</button>
+                <button type="button" class="genre-filter-btn" data-genre="girls">girls</button>
+                <button type="button" class="genre-filter-btn" data-genre="break">break</button>
+            </div>
 
-        <div class="back-btn-area">
-            <a href="member.html" class="back-btn">メンバー限定ページに戻る</a>
-        </div>
+            <div class="schedule-table-wrap">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>日程</th>
+                            <th>時間</th>
+                            <th>内容</th>
+                            <th>ジャンル</th>
+                            <th>場所</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleTableBody">
+                        <tr>
+                            <td colspan="5" class="empty-schedule">読み込み中...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
+            <div class="back-btn-area">
+                <a href="member.html" class="back-btn">メンバー限定ページに戻る</a>
+            </div>
+
+        </div>
     </main>
 
     <script src="schedules.js"></script>
@@ -82,6 +298,17 @@
 
         function showScheduleTable() {
             const tableBody = document.getElementById("scheduleTableBody");
+
+            if (typeof practiceSchedules === "undefined") {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="empty-schedule">
+                            schedules.js が読み込めていません。ファイル名と配置を確認してください。
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
 
             const filteredSchedules = practiceSchedules.filter(schedule => {
                 if (selectedGenres.length === 0) {
@@ -114,7 +341,7 @@
                                 ${schedule.title}
                             </span>
                         </td>
-                        <td>${schedule.genres.join(" / ")}</td>
+                        <td class="genre-list">${schedule.genres.join(" / ")}</td>
                         <td>${schedule.place}</td>
                     </tr>
                 `;
@@ -139,7 +366,10 @@
                     }
 
                     const allButton = document.querySelector('[data-genre="all"]');
-                    allButton.classList.remove("active");
+
+                    if (allButton) {
+                        allButton.classList.remove("active");
+                    }
 
                     if (selectedGenres.includes(genre)) {
                         selectedGenres = selectedGenres.filter(item => item !== genre);
@@ -149,7 +379,7 @@
                         button.classList.add("active");
                     }
 
-                    if (selectedGenres.length === 0) {
+                    if (selectedGenres.length === 0 && allButton) {
                         allButton.classList.add("active");
                     }
 

@@ -12,6 +12,106 @@
             location.href = "login.html";
         }
     </script>
+
+    <style>
+        .schedule-page {
+            background: #f7f4ef;
+            min-height: 100vh;
+        }
+
+        .schedule-main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px 60px;
+        }
+
+        .schedule-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .schedule-title h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #2b2b2b;
+        }
+
+        .schedule-title p {
+            color: #666;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .schedule-table th {
+            background: #2b2b2b;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .schedule-type {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            background: #eee;
+            color: #333;
+        }
+
+        .schedule-type.runthrough {
+            background: #ffe1e8;
+            color: #d9365f;
+        }
+
+        .back-btn-area {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 999px;
+            background: #2b2b2b;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #555;
+        }
+
+        @media (max-width: 700px) {
+            .schedule-table {
+                font-size: 0.9rem;
+            }
+
+            .schedule-table th,
+            .schedule-table td {
+                padding: 12px 8px;
+            }
+        }
+    </style>
 </head>
 
 <body class="schedule-page">
@@ -20,46 +120,21 @@
 
         <div class="schedule-title">
             <h1>練習日程</h1>
-            <p>ジャンルを選択すると、該当する練習日程だけを表示できます。</p>
+            <p>今後の練習・通しの日程を確認できます。</p>
         </div>
 
-        <div class="genre-filter-area">
-            <button class="genre-filter-btn active" data-genre="all">すべて</button>
-            <button class="genre-filter-btn" data-genre="hiphop">hiphop</button>
-            <button class="genre-filter-btn" data-genre="無house">無house</button>
-            <button class="genre-filter-btn" data-genre="限house">限house</button>
-            <button class="genre-filter-btn" data-genre="pop">pop</button>
-            <button class="genre-filter-btn" data-genre="lock">lock</button>
-            <button class="genre-filter-btn" data-genre="punking">punking</button>
-            <button class="genre-filter-btn" data-genre="jazz">jazz</button>
-            <button class="genre-filter-btn" data-genre="girls">girls</button>
-            <button class="genre-filter-btn" data-genre="break">break</button>
-        </div>
-
-        <div class="schedule-note">
-            <p>
-                月：無house・lock ／ 火：girls・punking ／ 水：break・限house ／ 木：jazz・OP ／ 金：hiphop・pop ／ 土日：全ジャンル
-            </p>
-            <p>
-                5/3〜5/6は合宿、6/9〜6/12は小屋入り期間、6/13は本番です。
-            </p>
-        </div>
-
-        <div class="schedule-table-wrap">
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>日程</th>
-                        <th>時間</th>
-                        <th>内容</th>
-                        <th>ジャンル</th>
-                        <th>場所</th>
-                    </tr>
-                </thead>
-                <tbody id="scheduleTableBody">
-                </tbody>
-            </table>
-        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>日程</th>
+                    <th>時間</th>
+                    <th>内容</th>
+                    <th>場所</th>
+                </tr>
+            </thead>
+            <tbody id="scheduleTableBody">
+            </tbody>
+        </table>
 
         <div class="back-btn-area">
             <a href="member.html" class="back-btn">メンバー限定ページに戻る</a>
@@ -67,98 +142,88 @@
 
     </main>
 
-    <script src="schedules.js"></script>
-
     <script>
-        let selectedGenres = [];
+        const practiceSchedules = [
+            {
+                date: "2026-04-25",
+                time: "18:00〜21:00",
+                title: "通常練習",
+                place: "大学体育館"
+            },
+            {
+                date: "2026-04-28",
+                time: "18:00〜21:00",
+                title: "ジャンル練習",
+                place: "湘南台文化センター"
+            },
+            {
+                date: "2026-05-01",
+                time: "18:00〜21:00",
+                title: "通常練習",
+                place: "大学体育館"
+            },
+            {
+                date: "2026-05-05",
+                time: "13:00〜18:00",
+                title: "通し",
+                place: "体育館"
+            },
+            {
+                date: "2026-05-12",
+                time: "13:00〜18:00",
+                title: "通し",
+                place: "体育館"
+            }
+        ];
 
-        function getTypeClass(type) {
-            if (type === "通し") return "runthrough";
-            if (type === "合宿") return "camp";
-            if (type === "小屋入り") return "theater";
-            if (type === "本番") return "performance";
-            return "";
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            const weekday = weekdays[date.getDay()];
+
+            return `${month}月${day}日（${weekday}）`;
         }
 
         function showScheduleTable() {
             const tableBody = document.getElementById("scheduleTableBody");
 
-            const filteredSchedules = practiceSchedules.filter(schedule => {
-                if (selectedGenres.length === 0) {
-                    return true;
-                }
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
 
-                return selectedGenres.some(genre => schedule.genres.includes(genre));
-            });
+            const futureSchedules = practiceSchedules
+                .filter(schedule => new Date(schedule.date) >= today)
+                .sort((a, b) => new Date(a.date) - new Date(b.date));
 
-            if (filteredSchedules.length === 0) {
+            if (futureSchedules.length === 0) {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="5" class="empty-schedule">
-                            該当する練習日程はありません。
-                        </td>
+                        <td colspan="4">現在、表示できる練習日程はありません。</td>
                     </tr>
                 `;
                 return;
             }
 
-            tableBody.innerHTML = filteredSchedules.map(schedule => {
-                const typeClass = getTypeClass(schedule.type);
+            tableBody.innerHTML = futureSchedules.map(schedule => {
+                const isRunthrough = schedule.title === "通し";
 
                 return `
                     <tr>
-                        <td>${formatDateJapanese(schedule.date)}</td>
+                        <td>${formatDate(schedule.date)}</td>
                         <td>${schedule.time}</td>
                         <td>
-                            <span class="schedule-type ${typeClass}">
+                            <span class="schedule-type ${isRunthrough ? "runthrough" : ""}">
                                 ${schedule.title}
                             </span>
                         </td>
-                        <td>${schedule.genres.join(" / ")}</td>
                         <td>${schedule.place}</td>
                     </tr>
                 `;
             }).join("");
         }
 
-        function setupGenreFilters() {
-            const buttons = document.querySelectorAll(".genre-filter-btn");
-
-            buttons.forEach(button => {
-                button.addEventListener("click", () => {
-                    const genre = button.dataset.genre;
-
-                    if (genre === "all") {
-                        selectedGenres = [];
-
-                        buttons.forEach(btn => btn.classList.remove("active"));
-                        button.classList.add("active");
-
-                        showScheduleTable();
-                        return;
-                    }
-
-                    const allButton = document.querySelector('[data-genre="all"]');
-                    allButton.classList.remove("active");
-
-                    if (selectedGenres.includes(genre)) {
-                        selectedGenres = selectedGenres.filter(item => item !== genre);
-                        button.classList.remove("active");
-                    } else {
-                        selectedGenres.push(genre);
-                        button.classList.add("active");
-                    }
-
-                    if (selectedGenres.length === 0) {
-                        allButton.classList.add("active");
-                    }
-
-                    showScheduleTable();
-                });
-            });
-        }
-
-        setupGenreFilters();
         showScheduleTable();
     </script>
 

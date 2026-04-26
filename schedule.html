@@ -369,7 +369,16 @@
                 return;
             }
 
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
             const filteredSchedules = practiceSchedules.filter(schedule => {
+                const scheduleDate = parseDateLocal(schedule.date);
+
+                if (scheduleDate < today) {
+                    return false;
+                }
+
                 if (selectedGenres.length === 0) {
                     return true;
                 }
@@ -381,7 +390,7 @@
                 tableBody.innerHTML = `
                     <tr>
                         <td colspan="5" class="empty-schedule">
-                            該当する練習日程はありません。
+                            今後の練習日程はありません。
                         </td>
                     </tr>
                 `;
